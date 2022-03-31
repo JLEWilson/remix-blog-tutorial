@@ -17,7 +17,6 @@ export const loader: LoaderFunction = async ({
   
   return json<LoaderData>({ post });
 };
-
 type ActionData = 
 | {
   startSlug: null | string;
@@ -48,7 +47,6 @@ export const action: ActionFunction = async ({
     (errorMessage) => errorMessage
   );
   if(hasErrors){
-    console.log(errors);
     return json<ActionData>(errors);
   }
 
@@ -100,7 +98,7 @@ export default function EditSlug() {
           <input
             type="text"
             name="title"
-            placeholder={post.title}
+            defaultValue={post.title}
             className={inputClassName}
           />
         </label>
@@ -114,7 +112,7 @@ export default function EditSlug() {
           <input
             type="text"
             name="slug"
-            placeholder={post.slug}
+            defaultValue={post.slug}
             className={inputClassName}
           />
         </label>
@@ -133,7 +131,7 @@ export default function EditSlug() {
           id="markdown"
           rows={20}
           name="markdown"
-          placeholder={post.markdown}
+          defaultValue={post.markdown}
           className={`${inputClassName} font-mono`}
         />
       </p>
@@ -142,7 +140,7 @@ export default function EditSlug() {
           type="submit"
           className="rounded bg-blue-500 py-2 px-4 text-white hover:bg-blue-600 focus:bg-blue-400 disabled:bg-blue-300"
         >
-          Create Post
+          Update Post
         </button>
       </p>
     </Form>
